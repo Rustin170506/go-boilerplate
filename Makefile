@@ -42,10 +42,7 @@ dev: check test
 build:
 	$(GOBUILD)
 
-check: fmt errcheck unconvert lint tidy check-static vet staticcheck
-
-# These need to be fixed before they can be ran regularly.
-check-fail: goword
+check: fmt errcheck unconvert lint tidy check-static vet staticcheck goword
 
 fmt:
 	@echo "gofmt (simplify)"
