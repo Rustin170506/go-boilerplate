@@ -28,7 +28,6 @@ export PATH := $(path_to_add):$(PATH)
 GO              := GO111MODULE=on go
 GOBUILD         := $(GO) build $(BUILD_FLAG) -tags codes
 GOTEST          := $(GO) test -p $(P)
-OVERALLS        := GO111MODULE=on overalls
 STATICCHECK     := GO111MODULE=on staticcheck
 
 PACKAGE_LIST  := go list ./...
