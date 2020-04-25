@@ -37,10 +37,18 @@ FILES     := $$(find $$($(PACKAGE_DIRECTORIES)) -name "*.go")
 
 .PHONY: build clean test dev check tidy ddltest
 
-dev: check test
-
 build:
 	$(GOBUILD)
+
+clean:
+	$(GO) clean -i ./...
+	rm -rf *.out
+
+test:
+	$(GOTEST)
+	@>&2 echo "Great, all tests passed."
+
+dev: check test
 
 check: fmt errcheck unconvert lint tidy check-static vet staticcheck goword
 
@@ -83,16 +91,6 @@ staticcheck:tools/bin/staticcheck
 tidy:
 	@echo "go mod tidy"
 	./tools/check/check-tidy.sh
-
-clean:
-	$(GO) clean -i ./...
-	rm -rf *.out
-	rm -rf parser
-
-# Run tests.
-test:
-	$(GOTEST)
-	@>&2 echo "Great, all tests passed."
 
 tools/bin/revive: tools/check/go.mod
 	cd tools/check; \
