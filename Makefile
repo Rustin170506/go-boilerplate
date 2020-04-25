@@ -28,7 +28,6 @@ export PATH := $(path_to_add):$(PATH)
 GO              := GO111MODULE=on go
 GOBUILD         := $(GO) build $(BUILD_FLAG) -tags codes
 GOTEST          := $(GO) test -p $(P)
-STATICCHECK     := GO111MODULE=on staticcheck
 
 PACKAGE_LIST  := go list ./...
 PACKAGES  := $$($(PACKAGE_LIST))
@@ -85,7 +84,7 @@ vet:
 
 staticcheck:tools/bin/staticcheck
 	@echo "static checking"
-	$(STATICCHECK) ./...
+	@GO111MODULE=on tools/bin/staticcheck ./...
 
 tidy:
 	@echo "go mod tidy"
