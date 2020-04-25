@@ -42,9 +42,6 @@ dev: check test
 build:
 	$(GOBUILD)
 
-# Install the check tools.
-check-setup:tools/bin/revive tools/bin/goword tools/bin/gosec
-
 check: fmt errcheck unconvert lint tidy check-static vet staticcheck
 
 # These need to be fixed before they can be ran regularly.
