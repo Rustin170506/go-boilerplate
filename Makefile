@@ -121,12 +121,6 @@ tools/bin/staticcheck: tools/check/go.mod
 	cd tools/check; \
 	$(GO) build -o ../bin/staticcheck honnef.co/go/tools/cmd/staticcheck
 
-tools/bin/misspell:tools/check/go.mod
-	$(GO) get -u github.com/client9/misspell/cmd/misspell
-
-tools/bin/ineffassign:tools/check/go.mod
-	cd tools/check; \
-	$(GO) build -o ../bin/ineffassign github.com/gordonklaus/ineffassign
 tools/bin/golangci-lint:
 	curl -sfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh| sh -s -- -b ./tools/bin v1.21.0
 
