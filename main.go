@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	fmt.Println("I love Rust!")
+	fmt.Println("ti-community-lgtm!")
 }
